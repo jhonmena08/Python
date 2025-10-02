@@ -1,5 +1,5 @@
 def main():
-    print("Hello from semana-01!")
+    print("Bienvenidos a Python en Github")
 
 
 if __name__ == "__main__":
