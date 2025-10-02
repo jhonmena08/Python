@@ -1,5 +1,17 @@
+from dataclasses import dataclass
+
+@dataclass
+class Point:
+    x: int
+    y: int
+
+    def __str__(self) -> str:
+        return f'x:{self.x}, y:{self.y}'
+
+
 def main():
-    print("Bienvenidos a Python en Github")
+    p1: Point = Point(102, 236)
+    print(p1)
 
 
 if __name__ == "__main__":
