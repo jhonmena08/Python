@@ -1,17 +1,20 @@
-from dataclasses import dataclass
+import numpy as np
 
-@dataclass
-class Point:
-    x: int
-    y: int
+def main() -> int:
+    edades = {'Wilmar':30, 'Jenny':28, 'Herney':35}
 
-    def __str__(self) -> str:
-        return f'x:{self.x}, y:{self.y}'
+    # promedio de manera manual
+    count: int = len(edades)
+    suma: int = 0
+    for k, v in edades.items():
+        suma += v
 
+    print(f'promedio: {suma/count}')
 
-def main():
-    p1: Point = Point(102, 236)
-    print(p1)
+    # promedio con la funcion mean del paquete numpy
+    print(f'promedio {np.mean(list(edades.values()))}')
+    
+    return 0
 
 
 if __name__ == "__main__":
