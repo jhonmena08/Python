@@ -1,3 +1,4 @@
+import os
 
 personas: list[dict] = [
     {"nombre": "Ana", "edad": 23, "frutas": ("manzana", "pera", "uva")},
@@ -11,25 +12,41 @@ personas: list[dict] = [
 ]
 
 # Mostrar los nombres de todas las personas encuestadas
-def mostrar_nombres() -> None:
-    for p in personas:
-        print(p['nombre'])
+def listado_nombres() -> list[str]:
+    return [p['nombre'] for p in personas]
 
 
 # Calcular el promedio de edad.
 def promedio_edad() -> int:
-    for p in personas:
-        print(p['edad'])
+    promedio: float = sum(p['edad'] for p in personas) / len(personas)
+    return promedio
 
 
 # Crear un set con todas las frutas distintas que consumieron
 def set_frutas() -> set[str]:
-    ...
+    frutas_personas = list(p['frutas'] for p in personas)
+    frutas = set(fruta for tupla_frutas in frutas_personas for fruta in tupla_frutas)
+    return frutas
 
 
 # Contar cuántas veces se mencionó cada fruta
-def cantidad_frutas(patron: str) -> int:
-    ...
+def contador_frutas() -> dict[str, int]:
+    frutas_personas = list(p['frutas'] for p in personas)
+    frutas_consumidas = list(fruta for tupla_frutas in frutas_personas for fruta in tupla_frutas)
+
+    todas_frutas = tuple(set_frutas())
+
+    my_dict: dict[str, int] = {}
+    for fruta in todas_frutas:
+        counter: int = 0
+        for consumidas in frutas_consumidas:
+            if fruta == consumidas:
+                counter =  counter + 1
+        
+        my_dict[str(fruta)] = counter
+
+    return my_dict
+
 
 
 # Definir una función que reciba la lista de personas y devuelva la fruta más popular
@@ -38,12 +55,21 @@ def fruta_popular(frutas: list[str]) -> str:
     
 
 def main()-> int:
-    print()
+    os.system('clear')
     
-    # mostrar_nombres()
-    promedio_edad()
+    print('-' * 100)
+    print(f'Personas encuestadas: {listado_nombres()}')
+    print('-' * 100)
 
-    print()
+    print(f'Edad promedio: {promedio_edad()} años')
+    print('-' * 100)
+
+    print(f'Frutas consumidas: {set_frutas()}')
+    print('-' * 100)
+
+    print(f'Conteo de frutas: {contador_frutas()}')
+    print('-' * 100)
+
     return 0
 
 
