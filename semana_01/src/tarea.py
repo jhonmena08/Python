@@ -48,10 +48,12 @@ def contador_frutas() -> dict[str, int]:
     return my_dict
 
 
-
-# Definir una función que reciba la lista de personas y devuelva la fruta más popular
-def fruta_popular(frutas: list[str]) -> str:
-    ...
+# Definir funcion que devuelva la fruta más popular
+def fruta_popular() -> list[str]:
+    conteo_frutas: dict[str, int] = contador_frutas()
+    maximo: int = max(conteo_frutas.values())
+    return [k for k, v in conteo_frutas.items() if v == maximo ]
+    
     
 
 def main()-> int:
@@ -69,7 +71,10 @@ def main()-> int:
 
     print(f'Conteo de frutas: {contador_frutas()}')
     print('-' * 100)
-
+    
+    print(f'Fruta mas popular: {fruta_popular()}')
+    print('-' * 100)
+    
     return 0
 
 
