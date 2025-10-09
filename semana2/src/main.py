@@ -6,6 +6,9 @@ def main():
     # convertir a int a float
     df['price'] = df['price'].astype(float)
 
+    # Opción para ajustar al contenido (autoajuste)
+    pd.set_option('display.max_colwidth', None)
+
     # Establecer el formato de visualización floats
     pd.options.display.float_format = '${:,.0f}'.format
 
@@ -13,7 +16,7 @@ def main():
     # df2 = df[df['price'] == df['price'].max()]
 
     print()
-    print(df[df['price'] == df['price'].min()][['product', 'price', 'kilometraje']])
+    print(df[['product', 'price', 'kilometraje']])
     print()
 
 
