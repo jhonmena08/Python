@@ -1,3 +1,3 @@
-# Curso virtual introductorio a Python
-# univalle 2025
+Curso virtual introductorio a Python
+univalle 2025
 
