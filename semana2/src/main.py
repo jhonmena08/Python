@@ -10,7 +10,7 @@ def main() -> int:
     os.system('cls')
 
     # filtrar
-    df2 = df[df['price'] < 20_000_000]
+    df2 = df[df['price'] < 20_000_000][['product', 'price', 'created']]
     print(df2)
 
     print()
